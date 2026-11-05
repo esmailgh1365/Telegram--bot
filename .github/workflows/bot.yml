@@ -1,13 +1,18 @@
 name: Run bot
+
 on:
   workflow_dispatch:
   schedule:
     - cron: "0 */5 * * *"
 
+concurrency:
+  group: bot
+  cancel-in-progress: true
+
 jobs:
   run:
     runs-on: ubuntu-latest
-    timeout-minutes: 300
+    timeout-minutes: 330
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
