@@ -1,0 +1,84 @@
+{
+ "updated": "2026-11-06T14:40",
+ "daily": {
+  "total": 0,
+  "wins": 0,
+  "losses": 0,
+  "win_rate": null,
+  "avg_return": null
+ },
+ "weekly": {
+  "total": 0,
+  "wins": 0,
+  "losses": 0,
+  "win_rate": null,
+  "avg_return": null
+ },
+ "monthly": {
+  "total": 0,
+  "wins": 0,
+  "losses": 0,
+  "win_rate": null,
+  "avg_return": null
+ },
+ "all": {
+  "total": 0,
+  "wins": 0,
+  "losses": 0,
+  "win_rate": null,
+  "avg_return": null
+ },
+ "open": [],
+ "recent": [],
+ "insights": [
+  {
+   "key": "ma20",
+   "label": "بالای میانگین ۲۰ روزه",
+   "n": 0,
+   "win_rate": null,
+   "weight": 1.0
+  },
+  {
+   "key": "trend",
+   "label": "روند صعودی (MA20 > MA50)",
+   "n": 0,
+   "win_rate": null,
+   "weight": 1.0
+  },
+  {
+   "key": "rsi",
+   "label": "RSI در ناحیه‌ی قدرت",
+   "n": 0,
+   "win_rate": null,
+   "weight": 1.0
+  },
+  {
+   "key": "vol15",
+   "label": "حجم بالاتر از ۱.۵ برابر میانگین",
+   "n": 0,
+   "win_rate": null,
+   "weight": 1.0
+  },
+  {
+   "key": "vol25",
+   "label": "جهش حجم قوی (۲.۵ برابر)",
+   "n": 0,
+   "win_rate": null,
+   "weight": 1.0
+  },
+  {
+   "key": "breakout",
+   "label": "شکست سقف ۲۰ روزه",
+   "n": 0,
+   "win_rate": null,
+   "weight": 1.0
+  },
+  {
+   "key": "controlled",
+   "label": "رشد کنترل‌شده‌ی امروز",
+   "n": 0,
+   "win_rate": null,
+   "weight": 1.0
+  }
+ ]
+}
