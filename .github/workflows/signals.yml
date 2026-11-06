@@ -1,1 +1,55 @@
+name: signals
 
+on:
+  push:
+    paths: ["bundle.zip"]
+  schedule:
+    # بعد از بسته شدن بازار (شنبه تا چهارشنبه)، حدود ۱۶:۳۰ به وقت تهران
+    - cron: "0 13 * * 0-4"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Unpack bundle.zip (one time)
+        run: |
+          if [ -f bundle.zip ]; then
+            unzip -o bundle.zip
+            rm bundle.zip
+            git rm -q --ignore-unmatch index.html
+            git config user.name "signal-bot"
+            git config user.email "bot@users.noreply.github.com"
+            git add -A
+            git commit -m "add bot files from bundle" || true
+            git push
+          fi
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Evaluate open signals, then scan
+        run: |
+          python signals.py evaluate
+          python signals.py scan
+          python signals.py evaluate
+
+      - name: Notify Telegram
+        env:
+          BOT_TOKEN: ${{ secrets.BOT_TOKEN }}
+          CHAT_ID: ${{ secrets.CHAT_ID }}
+        run: python notify.py
+
+      - name: Commit data
+        run: |
+          git config user.name "signal-bot"
+          git config user.email "bot@users.noreply.github.com"
+          git add docs/data
+          git diff --cached --quiet || git commit -m "update signals"
+          git push
